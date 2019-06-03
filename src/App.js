@@ -1,24 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import DiscoveredFile from './components/DiscoveredFiles/DiscoveredFile/DiscoveredFile';
+import DiscoveredFiles from './components/DiscoveredFiles/DiscoveredFiles'
+
+import './firebase'
+
+const { ipcRenderer } = window.require('electron')
+
+
 
 function App() {
+
+  const [discoveredFiles, setDiscoveredFiles] = useState([])
+
+  ipcRenderer.on('files-discovered', (event, arg) => setDiscoveredFiles(arg))
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <DiscoveredFiles files={discoveredFiles} />
+      {/* <div className="discovered-files">
+        <div className="discovered-files-container">
+          {Object.entries(discoveredFiles).map(([fileName, fileObj]) => (
+            <DiscoveredFile key={fileName} fileName={fileName} fileObj={fileObj} />
+          ))}
+        </div>
+      </div> */}
     </div>
   );
 }

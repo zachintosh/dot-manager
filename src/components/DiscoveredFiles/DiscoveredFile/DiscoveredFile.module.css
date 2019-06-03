@@ -1,0 +1,31 @@
+.grid {
+  display: grid;
+  grid-template-columns: 40px auto min-content min-content;
+  grid-column-gap: 10px;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.fileTitle {
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.fileName {
+  font-size: 20px;
+  line-height: 30px;
+  opacity: .4;
+}
+
+.icon {
+  height: 30px;
+  width: 30px;
+}
+
+.iconContainer {
+  height: 30px;
+  line-height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
